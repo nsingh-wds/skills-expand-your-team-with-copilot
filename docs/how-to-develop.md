@@ -21,7 +21,7 @@ The project requires the following Python packages:
 - FastAPI - Modern web framework for building APIs
 - Uvicorn - ASGI server implementation for running the FastAPI application
 - PyMongo - MongoDB driver for Python
-- Argon2 - Password hashing library for secure authentication
+- Argon2-cffi - Password hashing library used for database initialization
 
 These dependencies will be installed when you run `pip install -r src/requirements.txt`
 
@@ -70,8 +70,8 @@ These dependencies will be installed when you run `pip install -r src/requiremen
 | ------ | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | GET    | `/activities`                      | Get all activities with their details. Supports optional query parameters: `day`, `start_time`, `end_time` for filtering |
 | GET    | `/activities/days`                 | Get a list of all days that have activities scheduled                                                                    |
-| POST   | `/activities/{activity_name}/signup` | Sign up a student for an activity. Requires `email` and `teacher_username` query parameters                            |
-| POST   | `/activities/{activity_name}/unregister` | Remove a student from an activity. Requires `email` and `teacher_username` query parameters                        |
+| POST   | `/activities/{activity_name}/signup` | Sign up a student for an activity. Requires `email` query parameter and `teacher_username` for authentication        |
+| POST   | `/activities/{activity_name}/unregister` | Remove a student from an activity. Requires `email` query parameter and `teacher_username` for authentication    |
 
 #### Authentication
 
